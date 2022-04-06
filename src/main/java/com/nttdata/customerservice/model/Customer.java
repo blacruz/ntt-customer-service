@@ -11,7 +11,7 @@ import lombok.Data;
 public class Customer {
 
   @Id
-  private ObjectId id;
+  private String id;
   private String firstName;
   private String lastName;
   private CustomerType customerType;
