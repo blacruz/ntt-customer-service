@@ -1,15 +1,18 @@
 package com.nttdata.customerservice.controller;
 
-import org.bson.types.ObjectId;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.nttdata.customerservice.model.Customer;
 import com.nttdata.customerservice.service.CustomerService;
+import com.nttdata.customerservice.service.dto.CustomerInDto;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -49,5 +52,10 @@ public class CustomerController {
     return customer; 
   }
   
+  @PostMapping
+  public Mono<Customer> createCustomer(@RequestBody CustomerInDto dto) {
+    Mono<Customer> monoCustomer = customerService.createCustomer(dto);
+      return monoCustomer;
+  }
   
 }

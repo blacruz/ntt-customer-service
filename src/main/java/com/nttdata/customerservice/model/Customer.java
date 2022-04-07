@@ -1,6 +1,7 @@
 package com.nttdata.customerservice.model;
 
-import org.bson.types.ObjectId;
+
+import java.time.LocalDateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
@@ -15,8 +16,9 @@ public class Customer {
   private String firstName;
   private String lastName;
   private CustomerType customerType;
+  private CustomerStatus customerStatus;
+  private LocalDateTime createDate;
 
-  
   
   
 }
