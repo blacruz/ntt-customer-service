@@ -4,10 +4,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.nttdata.customerservice.mapper.CompanyInDTOCustomer;
 import com.nttdata.customerservice.mapper.CustomerInDTOToCustomer;
 import com.nttdata.customerservice.model.Customer;
 import com.nttdata.customerservice.model.CustomerStatus;
 import com.nttdata.customerservice.repository.RepositoryCustomer;
+import com.nttdata.customerservice.service.dto.CompanyInDto;
 import com.nttdata.customerservice.service.dto.CustomerInDto;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -28,6 +30,11 @@ public class CustomerService implements ICustomerService{
      Customer monoCustomer =  CustomerInDTOToCustomer.map(inDto);
     return repositoryCustomer.save(monoCustomer);
     }
+  
+  public Mono<Customer> createCompany(CompanyInDto companyInDto){
+    Customer customer = CompanyInDTOCustomer.map(companyInDto);
+    return repositoryCustomer.save(customer);
+  }
  
   @Override
   @Transactional(readOnly = true)

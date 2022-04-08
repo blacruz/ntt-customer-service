@@ -39,7 +39,7 @@ class CustomerServiceApplicationTests {
     }).expectComplete().verify();
     
     
-    //customersRepo.deleteById(saveCustomer.getId()).block();
+    customersRepo.deleteById(saveCustomer.getId()).block();
   }
 
 }

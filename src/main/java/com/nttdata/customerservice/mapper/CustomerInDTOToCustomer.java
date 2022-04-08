@@ -16,6 +16,9 @@ public class CustomerInDTOToCustomer {
    customer.setCreateDate(LocalDateTime.now());
    customer.setCustomerType(CustomerType.NATURAL);
    customer.setCustomerStatus(CustomerStatus.ENABLED);
+   customer.setAddresses(in.getAddresses());
+   customer.setContacts(in.getContacts());
+   customer.setDocuments(in.getDocuments());
    return customer;
   }
 

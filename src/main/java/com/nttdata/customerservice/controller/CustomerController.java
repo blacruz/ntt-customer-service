@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nttdata.customerservice.model.Customer;
 import com.nttdata.customerservice.model.CustomerType;
 import com.nttdata.customerservice.service.CustomerService;
+import com.nttdata.customerservice.service.dto.CompanyInDto;
 import com.nttdata.customerservice.service.dto.CustomerInDto;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -53,9 +54,16 @@ public class CustomerController {
     return customer;
   }
 
-  @PostMapping
+  @PostMapping("/customer")
   public Mono<Customer> createCustomer(@RequestBody CustomerInDto dto) {
     Mono<Customer> monoCustomer = customerService.createCustomer(dto);
+    return monoCustomer;
+  }
+
+
+  @PostMapping("/commpany")
+  public Mono<Customer> createCompany(@RequestBody CompanyInDto companyInDto) {
+    Mono<Customer> monoCustomer = customerService.createCompany(companyInDto);
     return monoCustomer;
   }
 
