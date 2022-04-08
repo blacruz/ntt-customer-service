@@ -4,9 +4,11 @@ package com.nttdata.customerservice.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,6 +58,23 @@ public class CustomerController {
   public Mono<Customer> createCustomer(@RequestBody CustomerInDto dto) {
     Mono<Customer> monoCustomer = customerService.createCustomer(dto);
       return monoCustomer;
+  }
+  
+  
+  @PutMapping("/id/{id}")
+  public Mono<Customer> updateCsutomer(@PathVariable String id, 
+                                          @RequestBody Customer customer)
+  {
+    //Customer customer2 = new Customer();
+//    customer2.setId(id);
+    return customerService.updateCustomer(customer);
+  }
+  
+  
+  @DeleteMapping("/id/{id}")
+  public Mono<Customer> deleteCustomer(@PathVariable String id){
+    
+    return customerService.deleteCustomer(id);
   }
   
 }
