@@ -63,7 +63,7 @@ public class CustomerService implements ICustomerService{
  
     return repositoryCustomer.findById(new String(id))
         .map(customer -> {
-          customer.setCustomerStatus(CustomerStatus.Disabled);
+          customer.setCustomerStatus(CustomerStatus.DISABLED);
           repositoryCustomer.save(customer).subscribe();
           
           logger_file.info("Deleted the customer with id= {}", id);

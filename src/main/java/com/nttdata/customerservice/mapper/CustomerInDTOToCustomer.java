@@ -14,8 +14,8 @@ public class CustomerInDTOToCustomer {
    customer.setFirstName(in.getFirstName());
    customer.setLastName(in.getLastName());
    customer.setCreateDate(LocalDateTime.now());
-   customer.setCustomerType(CustomerType.Natural);
-   customer.setCustomerStatus(CustomerStatus.Enableb);
+   customer.setCustomerType(CustomerType.NATURAL);
+   customer.setCustomerStatus(CustomerStatus.ENABLED);
    return customer;
   }
 

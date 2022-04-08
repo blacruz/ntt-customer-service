@@ -29,13 +29,13 @@ class CustomerServiceApplicationTests {
     var customer = new Customer();
     customer.setFirstName("Dennilson");
     customer.setLastName("Muñoz");
-    customer.setCustomerType(CustomerType.Natural);
+    customer.setCustomerType(CustomerType.NATURAL);
 
     var saveCustomer = customersRepo.save(customer).block();
 
     var customertDb = customersRepo.findByFirstName("Dennilson");
     StepVerifier.create(customertDb).assertNext(cust -> {
-      assertEquals(CustomerType.Natural, cust.getCustomerType());
+      assertEquals(CustomerType.NATURAL, cust.getCustomerType());
     }).expectComplete().verify();
     
     
