@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.nttdata.customerservice.dtoaccounts.AccountType;
+import com.nttdata.customerservice.dtoaccounts.BalanceDTO;
 import com.nttdata.customerservice.model.Customer;
 import com.nttdata.customerservice.model.CustomerType;
 import com.nttdata.customerservice.service.CustomerService;
 import com.nttdata.customerservice.service.dto.CompanyInDto;
 import com.nttdata.customerservice.service.dto.CustomerInDto;
+import com.nttdata.customerservice.webclientimpl.WebClientAccountService;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -26,6 +29,9 @@ public class CustomerController {
 
   @Autowired
   private CustomerService customerService;
+  
+  @Autowired
+  private WebClientAccountService accountService;
 
 
   private static final Logger log = LoggerFactory.getLogger(CustomerController.class);
@@ -81,5 +87,10 @@ public class CustomerController {
 
     return customerService.deleteCustomer(id);
   }
+  
+  @GetMapping("/{id}/products")
+    public Flux<BalanceDTO> getAllProducts(@PathVariable String id){
+      return accountService.getAccountByIdCustomer(id);
+    }
 
 }
